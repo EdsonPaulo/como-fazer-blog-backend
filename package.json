@@ -4,6 +4,8 @@
   "description": "como fazer? blog´s backend",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/config/server.js",
+    "dev": "nodemon ./src/config/server.js",
     "test": "npm jest"
   },
   "repository": {

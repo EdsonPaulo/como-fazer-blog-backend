@@ -1,21 +1,24 @@
 "use strict";
-import express from "express";
-import cors from "cors";
-import { urlencoded, json } from "body-parser";
-import { BASE_URL } from "../config/environment";
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const { BASE_URL } = require("../config/environment.js");
+
+//loading models
+const Article = require("./models/article.js");
 
 //loading routes
-import ArticleRoutes from "./routes/article";
+const ArticleRoutes = require("./routes/article.js");
 
 const app = express();
 
 // Encoding urls & Transform req body to json
-app.use(urlencoded({ extended: true }));
-app.use(json({ limit: "5mb" }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "5mb" }));
 
 app.use(cors());
 
-//redirecionamento de rotas
+//redirectioning routes
 app.use(`${BASE_URL}/articles`, ArticleRoutes);
 
-export default app;
+module.exports = app;

@@ -1,13 +1,13 @@
 "use strict";
-import { Router } from "express";
-import {
+const { Router } = require("express");
+const {
   getArticles,
   getArticleById,
   getArticleBySlug,
   updateArticle,
   createArticle,
   deleteArticle,
-} from "../controllers/article";
+} = require("../controllers/article.js");
 
 const router = Router();
 
@@ -19,4 +19,4 @@ router.post("/", createArticle);
 router.put("/:id", updateArticle);
 router.delete("/:id", deleteArticle);
 
-export default router;
+module.exports = router;

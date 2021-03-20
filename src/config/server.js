@@ -1,17 +1,7 @@
 "use strict";
-import { createServer } from "http";
-import app from "../app";
-
+const { createServer } = require("http");
+const app = require("../app");
 const debug = require("debug")("crud:server");
-const port = normalizePort(process.env.PORT || "3000");
-const server = createServer(app);
-
-app.set("port", port);
-
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
-console.log("server running on " + port);
 
 /* Normmalize the server port */
 const normalizePort = (val) => {
@@ -45,3 +35,13 @@ const onListening = () => {
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Servidor escutando em " + bind);
 };
+
+const port = normalizePort(process.env.PORT || "3000");
+const server = createServer(app);
+
+app.set("port", port);
+
+server.listen(port);
+server.on("error", onError);
+server.on("listening", onListening);
+console.log("server running on " + port);

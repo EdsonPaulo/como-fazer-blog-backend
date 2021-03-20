@@ -1,9 +1,10 @@
-import mongoose, { Promise as mongoosePromise, connect } from "mongoose";
-import { BD_CONNECTION_STRING } from "../config/environment";
+const mongoose = require("mongoose");
+const { BD_CONNECTION_STRING } = require("../config/environment");
 
 //configurando o mongoose (conexão com MongoDB)
-mongoosePromise = global.Promise;
-connect(BD_CONNECTION_STRING, {
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(BD_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -16,4 +17,4 @@ connect(BD_CONNECTION_STRING, {
     console.log("ERROR: BD connection error: " + e);
   });
 
-export default mongoose;
+module.exports = mongoose

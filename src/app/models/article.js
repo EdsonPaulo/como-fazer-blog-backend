@@ -1,7 +1,8 @@
 "use strict";
-import { Schema, model } from "../../database";
-import mongoosePaginate from "mongoose-paginate-v2";
-import { ArticleCategories } from "../utils/constants";
+const mongoose = require("../../database");
+const mongoosePaginate = require("mongoose-paginate-v2");
+const { ArticleCategories } = require("../utils/constants");
+const Schema = mongoose.Schema;
 
 const Article = new Schema({
   title: { type: String, required: true, trim: true },
@@ -14,4 +15,4 @@ const Article = new Schema({
 });
 
 Article.plugin(mongoosePaginate);
-export default model("Article", Article);
+module.exports = mongoose.model("Article", Article);

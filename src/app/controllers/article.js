@@ -1,10 +1,10 @@
 "use strict";
-import { model } from "mongoose";
-import { paginateOptions } from "../utils/constants";
+const mongoose = require("mongoose");
+const { paginateOptions } = require("../utils/constants.js");
 
-const Article = model("Article");
+const Article = mongoose.model("Article");
 
-export const getArticles = async (req, res) => {
+exports.getArticles = async (req, res) => {
   const { page = 1, limit = 15, category } = req.query;
   let query = {};
   if (category) query.category = category;
@@ -21,7 +21,7 @@ export const getArticles = async (req, res) => {
   }
 };
 
-export const getArticleById = async (req, res) => {
+exports.getArticleById = async (req, res) => {
   try {
     const data = await Article.findById(req.params.id);
     return res.status(200).send(data);
@@ -30,7 +30,7 @@ export const getArticleById = async (req, res) => {
   }
 };
 
-export const getArticleBySlug = async (req, res) => {
+exports.getArticleBySlug = async (req, res) => {
   try {
     const data = await Article.findOne({ slug: req.params.slug });
     return res.status(200).send(data);
@@ -39,7 +39,7 @@ export const getArticleBySlug = async (req, res) => {
   }
 };
 
-export const createArticle = async (req, res) => {
+exports.createArticle = async (req, res) => {
   try {
     const { title, body, image, category, slug } = req.body;
     const data = await Article.create({
@@ -55,7 +55,7 @@ export const createArticle = async (req, res) => {
   }
 };
 
-export const updateArticle = async (req, res) => {
+exports.updateArticle = async (req, res) => {
   try {
     const data = await Article.findByIdAndUpdate(req.params.id, {
       $set: {
@@ -69,7 +69,7 @@ export const updateArticle = async (req, res) => {
   }
 };
 
-export const deleteArticle = async (req, res) => {
+exports.deleteArticle = async (req, res) => {
   try {
     const data = await Article.findByIdAndRemove(req.params.id);
     res.status(200).send({ message: "Artigo eliminado com sucesso!", data });

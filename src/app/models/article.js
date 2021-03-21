@@ -10,6 +10,14 @@ const Article = new Schema({
   image: { type: String, trim: true },
   slug: { type: String, trim: true, required: true, unique: true },
   categories: [{ type: String, enum: Object.values(ArticleCategories) }],
+  comments: [
+    {
+      name: { type: String, trim: true },
+      email: { type: String, trim: true },
+      body: { type: String, trim: true },
+      createdAt: { type: Date, default: Date.now },
+    },
+  ],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

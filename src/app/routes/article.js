@@ -12,8 +12,8 @@ const {
 const router = Router();
 
 router.get("/", getArticles);
-router.get("/:slug", getArticleBySlug);
 router.get("/:id", getArticleById);
+router.get("/slug/:slug", getArticleBySlug);
 
 router.post("/", createArticle);
 router.put("/:id", updateArticle);

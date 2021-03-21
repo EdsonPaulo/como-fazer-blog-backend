@@ -1,5 +1,6 @@
 "use strict";
 const mongoose = require("mongoose");
+const guid = require("guid");
 const { paginateOptions } = require("../utils/constants.js");
 
 const Article = mongoose.model("Article");
@@ -7,7 +8,7 @@ const Article = mongoose.model("Article");
 exports.getArticles = async (req, res) => {
   const { page = 1, limit = 15, category } = req.query;
   let query = {};
-  if (category) query.category = category;
+  if (category) query.categories = [category];
   try {
     const data = await Article.paginate(query, {
       ...paginateOptions,
@@ -41,12 +42,21 @@ exports.getArticleBySlug = async (req, res) => {
 
 exports.createArticle = async (req, res) => {
   try {
-    const { title, body, image, category, slug } = req.body;
+    const { title, body, image, categories } = req.body;
+    const slug = title
+      .trim()
+      .split(" ")
+      .join("-")
+      .split("?")
+      .join("")
+      .concat("-")
+      .concat(guid.raw().substring(0, 5))
+      .toLowerCase();
     const data = await Article.create({
       title,
       body,
       image,
-      category,
+      categories,
       slug,
     });
     res.status(201).send({ message: "Artigo salvo com sucesso!", data });

@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const { BASE_URL } = require("../config/environment.js");
 
 //loading models
-const Article = require("./models/article.js");
+require("./models/article.js");
 
 //loading routes
 const ArticleRoutes = require("./routes/article.js");

@@ -26,6 +26,8 @@ exports.ArticleCategories = {
   Entretenimento: "entretenimento",
   Internet: "internet",
   Educacao: "educação",
+  Social: "social",
+  Tecnologia: "tecnologia",
   Comunicacao: "comunicação",
   Informatica: "informática",
   Relacionamento: "relacionamento",

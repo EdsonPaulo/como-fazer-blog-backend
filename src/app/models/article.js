@@ -12,7 +12,7 @@ const Article = new Schema({
   categories: [{ type: String, enum: Object.values(ArticleCategories) }],
   comments: [
     {
-      name: { type: String, trim: true },
+      username: { type: String, trim: true },
       email: { type: String, trim: true },
       body: { type: String, trim: true },
       createdAt: { type: Date, default: Date.now },

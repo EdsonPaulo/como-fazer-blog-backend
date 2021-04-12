@@ -36,7 +36,7 @@ const onListening = () => {
   debug("Servidor escutando em " + bind);
 };
 
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort(process.env.PORT || "5000");
 const server = createServer(app);
 
 app.set("port", port);

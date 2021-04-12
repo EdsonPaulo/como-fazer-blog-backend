@@ -9,8 +9,6 @@ exports.paginateOptions = {
     nextPage: "next",
     prevPage: "prev",
     totalPages: "totalPages",
-    pagingCounter: "slNo",
-    meta: "",
   },
 };
 

@@ -8,7 +8,8 @@ const Article = new Schema({
   title: { type: String, required: true, trim: true },
   body: { type: String, required: true },
   image: { type: String, trim: true },
-  slug: { type: String, trim: true, required: true, unique: true },
+  slug: { type: Strirng, trim: true, required: true, unique: true },
+  likes: { type: Number, default: 0 },
   categories: [{ type: String, enum: Object.values(ArticleCategories) }],
   comments: [
     {

@@ -18,24 +18,52 @@ exports.Roles = {
 };
 
 exports.ArticleCategories = {
-  SemCategoria: "sem categoria",
+  Tudo: "tudo",
   Saude: "saúde",
   Financas: "finanças",
+  Tecnologia: "tecnologia",
   Entretenimento: "entretenimento",
   Internet: "internet",
   Educacao: "educação",
   Social: "social",
-  Tecnologia: "tecnologia",
-  Comunicacao: "comunicação",
-  Informatica: "informática",
   Relacionamento: "relacionamento",
-  Animais: "animais",
-  Desporto: "desporto",
-  Juventude: "juventude",
+  Hobby: "hobby",
   Filosofia: "filosofia",
   Religiao: "religião",
   Culinaria: "culinária",
   Estilo: "estilo",
-  Artesanato: "artesanato",
-  DesenvolvimentoPessoal: "desenvolvimento pessoal",
+  SemCategoria: "sem categoria",
 };
+
+exports.Shared = {
+  Id: "id",
+  MongoId: "_id",
+  Article: "article",
+  Articles: "articles",
+  Slug: "slug",
+  Title: "title",
+  Body: "body",
+  Image: "image",
+  Categories: "categories",
+  Category: "category",
+  Comments: "comments",
+  Comment: "comment",
+  Name: "name",
+  Likes: "likes",
+  Username: "username",
+  Email: "email",
+  CreatedAt: "createdAt",
+  UpdatedAt: "updatedAt",
+};
+
+
+exports.APIKeys = {
+  Query = "query",
+  Search = "search",
+  Page = "page",
+  Limit = "limit",
+  Total = "total",
+  Next = "next",
+  Prev = "prev",
+  TotalPages = "totalPages",
+}

@@ -45,6 +45,7 @@ exports.Shared = {
   Body: "body",
   Image: "image",
   Categories: "categories",
+  Tags: "tags",
   Category: "category",
   Comments: "comments",
   Comment: "comment",

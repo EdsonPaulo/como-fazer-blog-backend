@@ -8,7 +8,7 @@ const Article = mongoose.model("Article");
 exports.getArticles = async (req, res) => {
   const { page = 1, limit = 15, category } = req.query;
   let query = {};
-  if (category) query.categories = [category];
+  if (category) query.category = category;
   try {
     const data = await Article.paginate(query, {
       ...paginateOptions,
@@ -42,7 +42,7 @@ exports.getArticleBySlug = async (req, res) => {
 
 exports.createArticle = async (req, res) => {
   try {
-    const { title, body, image, categories } = req.body;
+    const { title, body, image, category, tags } = req.body;
     const slug = title
       .trim()
       .split(" ")
@@ -56,7 +56,8 @@ exports.createArticle = async (req, res) => {
       title,
       body,
       image,
-      categories,
+      tags,
+      category,
       slug,
     });
     res.status(201).send({ message: "Artigo salvo com sucesso!", data });

@@ -7,6 +7,8 @@ const {
   updateArticle,
   createArticle,
   deleteArticle,
+  commentArticle,
+  likeArticle,
 } = require("../controllers/article.js");
 
 const router = Router();
@@ -18,5 +20,8 @@ router.get("/slug/:slug", getArticleBySlug);
 router.post("/", createArticle);
 router.put("/:id", updateArticle);
 router.delete("/:id", deleteArticle);
+
+router.patch("/like/:slug", likeArticle);
+router.patch("/comment/:slug", commentArticle);
 
 module.exports = router;

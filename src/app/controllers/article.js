@@ -1,7 +1,7 @@
 "use strict";
 const mongoose = require("mongoose");
 const guid = require("guid");
-const { paginateOptions } = require("../utils/constants.js");
+const { paginateOptions, Shared } = require("../utils/constants.js");
 
 const Article = mongoose.model("Article");
 
@@ -50,7 +50,7 @@ exports.createArticle = async (req, res) => {
       .split("?")
       .join("")
       .concat("-")
-      .concat(guid.raw().substring(0, 5))
+      .concat(guid.raw().substring(0, 3))
       .toLowerCase();
     const data = await Article.create({
       title,
@@ -85,5 +85,45 @@ exports.deleteArticle = async (req, res) => {
     res.status(200).send({ message: "Artigo eliminado com sucesso!", data });
   } catch (error) {
     res.status(400).send({ message: "ERRO: Falha ao eliminar Artigo", error });
+  }
+};
+
+exports.likeArticle = async (req, res) => {
+  try {
+    const article = await Article.findOne({ slug: req.params.slug });
+    if (!article) throw new Error("Artigo não encontrado!");
+    await Article.findOneAndUpdate(
+      { slug: req.params.slug },
+      {
+        $set: {
+          [Shared.Likes]: article[Shared.Likes] + 1,
+          updatedAt: Date.now(),
+        },
+      }
+    );
+  } catch (error) {
+    res.status(400).send({ message: "Falha ao curtir artigo!", error });
+  }
+};
+
+exports.commentArticle = async (req, res) => {
+  try {
+    const article = await Article.findOne({ slug: req.params.slug });
+    if (!article) throw new Error("Artigo não encontrado!");
+    const { nome, email, body } = req.body;
+    await Article.findOneAndUpdate(
+      { slug: req.params.slug },
+      {
+        $set: {
+          [Shared.Comments]: [
+            ...article[Shared.Comments],
+            { nome, email, body, createdAt: Date.now() },
+          ],
+          updatedAt: Date.now(),
+        },
+      }
+    );
+  } catch (error) {
+    res.status(400).send({ message: "Falha ao comentar no artigo!", error });
   }
 };

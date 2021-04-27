@@ -89,7 +89,7 @@ exports.deleteArticle = async (req, res) => {
   }
 };
 
-exports.likeArticle = async (req, res) => {
+exports.viewArticle = async (req, res) => {
   try {
     const article = await Article.findOne({ slug: req.params.slug });
     if (!article) throw new Error("Artigo não encontrado!");
@@ -97,7 +97,7 @@ exports.likeArticle = async (req, res) => {
       { slug: req.params.slug },
       {
         $set: {
-          [Shared.Likes]: article[Shared.Likes] + 1,
+          [Shared.Views]: article[Shared.Views] + 1,
           updatedAt: Date.now(),
         },
       }

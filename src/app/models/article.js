@@ -9,7 +9,7 @@ const Article = new Schema({
   [Shared.Body]: { type: String, required: true },
   [Shared.Image]: { type: String, trim: true },
   [Shared.Slug]: { type: String, trim: true, required: true, unique: true },
-  [Shared.Likes]: { type: Number, default: 0 },
+  [Shared.Views]: { type: Number, default: 0 },
   [Shared.Category]: { type: String, enum: Object.values(ArticleCategories) },
   [Shared.Tags]: [{ type: String, trim: true }],
   [Shared.Comments]: [

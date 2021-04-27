@@ -8,7 +8,7 @@ const {
   createArticle,
   deleteArticle,
   commentArticle,
-  likeArticle,
+  viewArticle,
 } = require("../controllers/article.js");
 const { Shared, APIEndpoints } = require("../utils/constants.js");
 
@@ -23,7 +23,7 @@ router.delete(`/:${Shared.Id}`, deleteArticle);
 
 router.get(`/${Shared.Slug}/:${Shared.Slug}`, getArticleBySlug);
 
-router.patch(`/${APIEndpoints.Like}/:${Shared.Slug}`, likeArticle);
+router.patch(`/${APIEndpoints.View}/:${Shared.Slug}`, viewArticle);
 router.patch(`/${APIEndpoints.Comment}/:${Shared.Slug}`, commentArticle);
 
 module.exports = router;

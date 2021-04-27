@@ -50,7 +50,7 @@ exports.createArticle = async (req, res) => {
       .split("?")
       .join("")
       .concat("-")
-      .concat(guid.raw().substring(0, 3))
+      .concat(guid.raw().substring(0, 8))
       .toLowerCase();
     const data = await Article.create({
       title,

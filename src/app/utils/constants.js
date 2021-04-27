@@ -56,14 +56,19 @@ exports.Shared = {
   UpdatedAt: "updatedAt",
 };
 
-
 exports.APIKeys = {
-  Query = "query",
-  Search = "search",
-  Page = "page",
-  Limit = "limit",
-  Total = "total",
-  Next = "next",
-  Prev = "prev",
-  TotalPages = "totalPages",
-}
+  Query: "query",
+  Search: "search",
+  Page: "page",
+  Limit: "limit",
+  Total: "total",
+  Next: "next",
+  Prev: "prev",
+  TotalPages: "totalPages",
+};
+
+exports.APIEndpoints = {
+  Like: "like",
+  Comment: "comment",
+  Articles: "articles",
+};
